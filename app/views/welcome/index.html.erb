@@ -1,6 +1,23 @@
-<h1>Nopixel Tracker</h1>
+<%= render partial: 'application/header', layout: 'header' %>
+<div class="subhead">
+  <h1>Nopixel Tracker</h1>
+</div>
 
-<ul>
-  <li><a href="/streamers">Streamer Index</a></li>
-  <li><a href="/streamers/new">New Streamer</a></li>
-</ul>
+<div class="header" >
+  <h1>All Streamers</h1>
+</div>
+
+  <div class="body" >
+<% @streamers.each do |streamer| %>
+  <%= render partial: 'application/body', layout: 'body' %>
+    <h3>Name: <%= streamer.name %></h3>
+    <%= link_to "View #{streamer.name} on Twitch", "https://twitch.tv/#{streamer.url}" %>
+
+    <% streamer.characters.each do |character| %>
+      <p>Character: <%= character.name %></p>
+      <p>Status: <%= character.status %></p>
+      <p>Citizen ID: <%= character.citizen_id %></p>
+      <%= link_to "View #{character.name} on Wiki", "https://nopixel.fandom.com/wiki/#{character.url}" %>
+    <% end %>
+<% end %>
+  </div>
