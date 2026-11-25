@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   get "/", to: "welcome#index"
   resources :streamers
+  resources :clips
+  resources :characters
 end
